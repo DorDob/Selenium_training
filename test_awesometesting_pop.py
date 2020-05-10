@@ -28,13 +28,6 @@ def test_post_count_after_search(browser):
 
     search_result_page.verify_post_count(3)
 
-
-    # Pobranie listy tytułów
-
-    # Zamknięcie przeglądarki
-
-
-
 def test_post_count_on_cypress_label(browser):
 
     home_page = HomePage(browser)
