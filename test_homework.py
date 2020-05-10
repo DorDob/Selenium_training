@@ -41,7 +41,7 @@ def test_arena(browser):
 
     # UMIESZCZAM LOSOWO WYGENEROWANĄ NAZWĘ PROJEKTU W ZMIENNEJ - ZA POMOCĄ TEJ ZMIENNEJ BĘDĘ SZUKAĆ PROJEKTU W BAZIE
 
-    name_of_project = get_random_string(10)    # name_of_project - MOJA ZMIENNA
+    name_of_project = get_random_string(10)    
 
     name.send_keys(name_of_project)
     prefix.send_keys(get_random_string(6))
@@ -76,7 +76,6 @@ def test_arena(browser):
 
     projects = browser.find_elements(By.CSS_SELECTOR,'tr td a')
 
-
     # NASTĘPNIE, TWORZĘ KOLEJNĄ LISTĘ, KTÓRA BĘDZIE ZAWIERAĆ NAZWY TYCH PROJEKTÓW
 
     list_with_names = []
@@ -84,12 +83,10 @@ def test_arena(browser):
     for every_project in projects:
         list_with_names.append(every_project.text)
 
-
     # W ASERCJI SPRAWDZAM, CZY ZNAJDUJĄCA SIĘ W ZMIENNEJ NAZWA MOJEGO PROJEKTU - ZNAJDUJE SIĘ NA LIŚCIE NAZW STWORZONYCH PROJEKTÓW
 
     assert name_of_project in list_with_names
     print(name_of_project)
-
 
 
 def get_random_string(length):
