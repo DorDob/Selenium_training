@@ -17,11 +17,8 @@ def test_post_count():
     # Pobranie listy tytułów
     list_of_titles = browser.find_elements(By.CSS_SELECTOR,'.post-title.entry-title')
 
-    # Asercja że lista ma 4 elementy
+    # Asercja - lista ma 4 elementy
     #assert len(list_of_titles) == 4
-
-    # Zamknięcie przeglądarki
-
 
 def test_post_count_after_search():
     # Uruchomienie przeglądarki Chrome. Ścieżka do chromedrivera
@@ -56,7 +53,6 @@ def test_post_count_on_cypress_label():
     # Inicjalizacja elementu z labelką
     label = browser.find_element(By.LINK_TEXT, 'Cypress')
     # Kliknięcie na labelkę
-
     label.click()
     # Czekanie na stronę
     time.sleep(5)
