@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions
 @pytest.fixture()
 def browser():
     browser = Chrome(executable_path=ChromeDriverManager().install())
-    browser.get('https://www.awesome-testing.com/')
+    browser.get('https://www.awesome-testing.com/') 
     cookie = {'name': 'displayCookieNotice',
               'value': 'y',
               'domain': 'www.awesome-testing.com'}
@@ -20,68 +20,54 @@ def browser():
     browser.quit()
 
 def test_post_count(browser):
-    # Uruchomienie przeglądarki Chrome. Ścieżka do chromedrivera
-    # ustawiana automatycznie przez bibliotekę webdriver-manager
-                                               # wywalamy powtarzające się lienie kodu    # browser = Chrome(executable_path=ChromeDriverManager().install())
-
-    # Otwarcie strony
-                                               #wywalamy powtarzające się lienie kodu  # browser.get('https://www.awesome-testing.com/')
-    # Pobranie listy tytułów
+                                            # Uruchomienie przeglądarki Chrome. Ścieżka do chromedrivera
+                                            # ustawiana automatycznie przez bibliotekę webdriver-manager
+                                       
+                                            # Pobranie listy tytułów
     list_of_titles = browser.find_elements(By.CSS_SELECTOR,'.post-title.entry-title')
 
-    # Asercja że lista ma 4 elementy
-    #assert len(list_of_titles) == 4
-
-    # Zamknięcie przeglądarki
-                                               # wywalamy powtarzające się lienie kodu    # browser.close()
-
+                                            # Asercja że lista ma 4 elementy
+                                            # assert len(list_of_titles) == 4
+    assert len(list_of_post) == 4        
+                                       
+                                            # Uruchomienie przeglądarki Chrome. Ścieżka do chromedrivera
+                                            # ustawiana automatycznie przez bibliotekę webdriver-manager
 def test_post_count_after_search(browser):
-    # Uruchomienie przeglądarki Chrome. Ścieżka do chromedrivera
-    # ustawiana automatycznie przez bibliotekę webdriver-manager
-                                         # browser = Chrome(executable_path=ChromeDriverManager().install())
 
-    # Otwarcie strony
-                                            #browser.get('https://www.awesome-testing.com/')
-    # Inicjalizacja searchbara i przycisku search
+                                            # Otwarcie strony - browser.get('https://www.awesome-testing.com/')
+                                            # Inicjalizacja searchbara i przycisku search
     search_bar = browser.find_element(By.CSS_SELECTOR,'input.gsc-input')
     search_button = browser.find_element(By.CSS_SELECTOR, 'input.gsc-search-button')
-    # Szukanie
+                                            # Szukanie
     search_bar.send_keys('cypress')
     search_button.click()
-    # Czekanie na stronę
-    #time.sleep(5)
+                                            # Czekanie na stronę  time.sleep(5)
     wait = WebDriverWait(browser, 10)
     grey_status_bar = (By.CLASS_NAME, 'status-msg-body')
     wait.until(expected_conditions.visibility_of_element_located(grey_status_bar))
-    # Pobranie listy tytułów
+                                            # Pobranie listy tytułów
     titles = browser.find_elements(By.CLASS_NAME, 'post-title')
-    # Asercja że lista ma 3 elementy
-    assert len(titles) == 3
-    # Zamknięcie przeglądarki
-                                  # browser.quit()
-
-
+                                            # Asercja że lista ma 3 elementy
+    assert len(titles) == 3                                         
+                                            # Uruchomienie przeglądarki Chrome. Ścieżka do chromedrivera
+                                            # ustawiana automatycznie przez bibliotekę webdriver-manager
 def test_post_count_on_cypress_label(browser):
-    # Uruchomienie przeglądarki Chrome. Ścieżka do chromedrivera
-    # ustawiana automatycznie przez bibliotekę webdriver-manager
-                                                # browser = Chrome(executable_path=ChromeDriverManager().install())
+    
 
-    # Otwarcie strony
-                                                    # browser.get('https://www.awesome-testing.com/')
-    # Inicjalizacja elementu z labelką
-    label = browser.find_element(By.LINK_TEXT, 'Cypress')
-    # Kliknięcie na labelkę
+                                             # Otwarcie strony
+                                             # browser.get('https://www.awesome-testing.com/')
+                                             # Inicjalizacja elementu z labelką
+    label = browser.find_element(By.LINK_TEXT, 'Cypress'                                     
 
     label.click()
-    # Czekanie na stronę
-    #time.sleep(5)
+                                              # Czekanie na stronę
     wait = WebDriverWait(browser, 10)
     grey_status_bar = (By.CLASS_NAME, 'status-msg-body')
     wait.until(expected_conditions.visibility_of_element_located(grey_status_bar))
 
-    # Pobranie listy tytułów
+                                              # Pobranie listy tytułów
     titles = browser.find_elements(By.CSS_SELECTOR, 'input.gsc-input')
-    # Asercja że lista ma 1 element
+                                              # Asercja że lista ma 1 element
     assert len(titles) == 1
-    # Zamknięcie przeglądarki
+                                              # Zamknięcie przeglądarki
     browser.quit()
